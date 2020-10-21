@@ -18,19 +18,17 @@ import {
 
 import Header from './src/components/Header/Header';
 import ListContact from './src/components/ListContacts/ListContact';
-import AddIcon from './src/components/Button/AddIcon';
-
-import {} from 'react-native/Libraries/NewAppScreen';
+import AddContactButton from './src/components/Button/AddContactButton';
 
 const App: () => React$Node = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
+      <SafeAreaView style={styles.container}>
         <View>
           <Header />
         </View>
-        <ScrollView style={styles.container}>
+        <ScrollView style={styles.item}>
           <ListContact />
           <ListContact />
           <ListContact />
@@ -49,9 +47,8 @@ const App: () => React$Node = () => {
           <ListContact />
           <ListContact />
         </ScrollView>
-        <View>
-          <AddIcon />
-        </View>
+
+        <AddContactButton />
       </SafeAreaView>
     </>
   );
@@ -59,6 +56,10 @@ const App: () => React$Node = () => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  item: {
     margin: 20,
     marginTop: 0,
   },
