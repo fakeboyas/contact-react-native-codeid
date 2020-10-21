@@ -1,11 +1,18 @@
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/AntDesign';
+import {useNavigation} from '@react-navigation/native';
 
 function AddContactButton() {
+  const navigation = useNavigation();
   return (
     <TouchableOpacity activeOpacity={0.5} style={styles.TouchableOpacityStyle}>
-      <Icon name="pluscircle" size={60} color="purple" />
+      <Icon
+        name="pluscircle"
+        size={60}
+        color="purple"
+        onPress={() => navigation.navigate('Buat Kontak')}
+      />
     </TouchableOpacity>
   );
 }

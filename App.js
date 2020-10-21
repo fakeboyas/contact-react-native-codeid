@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import * as React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -15,54 +15,24 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import 'react-native-gesture-handler';
+import Contact from './src/pages/Contact/Contact';
+import AddContact from './src/pages/AddContact/AddContact';
 
-import Header from './src/components/Header/Header';
-import ListContact from './src/components/ListContacts/ListContact';
-import AddContactButton from './src/components/Button/AddContactButton';
-
+const Stack = createStackNavigator();
 const App: () => React$Node = () => {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={styles.container}>
-        <View>
-          <Header />
-        </View>
-        <ScrollView style={styles.item}>
-          <ListContact />
-          <ListContact />
-          <ListContact />
-          <ListContact />
-          <ListContact />
-          <ListContact />
-          <ListContact />
-          <ListContact />
-          <ListContact />
-          <ListContact />
-          <ListContact />
-          <ListContact />
-          <ListContact />
-          <ListContact />
-          <ListContact />
-          <ListContact />
-          <ListContact />
-        </ScrollView>
-
-        <AddContactButton />
-      </SafeAreaView>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Kontak">
+          <Stack.Screen name="Kontak" component={Contact} />
+          <Stack.Screen name="Buat Kontak" component={AddContact} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  item: {
-    margin: 20,
-    marginTop: 0,
-  },
-});
 
 export default App;

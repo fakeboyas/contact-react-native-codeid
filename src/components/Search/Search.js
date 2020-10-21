@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, Image, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
-function Header() {
+function Search() {
   return (
     <>
       <View style={styles.container}>
@@ -19,7 +19,7 @@ function Header() {
   );
 }
 
-export default Header;
+export default Search;
 
 const styles = StyleSheet.create({
   container: {
