@@ -1,8 +1,8 @@
-import {API_URL} from '@env';
+import {GET_CONTACTS} from './types';
 
 export const addContact = (formData) => async (dispatch) => {
   try {
-    const url = `${API_URL}contact`;
+    const url = `https://simple-contact-crud.herokuapp.com/contact`;
     const options = {
       method: 'POST',
       body: JSON.stringify(formData),
@@ -16,4 +16,25 @@ export const addContact = (formData) => async (dispatch) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const getContacts = () => {
+  return async (dispatch, getState) => {
+    let url = `https://simple-contact-crud.herokuapp.com/contact`;
+
+    let options = {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+      },
+    };
+
+    let response = await fetch(url, options);
+    let results = await response.json();
+
+    dispatch({
+      type: GET_CONTACTS,
+      payload: results,
+    });
+  };
 };

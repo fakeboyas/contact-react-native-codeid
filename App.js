@@ -20,17 +20,22 @@ import {createStackNavigator} from '@react-navigation/stack';
 import 'react-native-gesture-handler';
 import Contact from './src/pages/Contact/Contact';
 import AddContact from './src/pages/AddContact/AddContact';
+import {Provider} from 'react-redux';
+import configureStore from './src/redux/configureStore';
 
 const Stack = createStackNavigator();
-const App: () => React$Node = () => {
+const App = () => {
+  const store = configureStore();
   return (
     <>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Kontak">
-          <Stack.Screen name="Kontak" component={Contact} />
-          <Stack.Screen name="Buat Kontak" component={AddContact} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Kontak">
+            <Stack.Screen name="Kontak" component={Contact} />
+            <Stack.Screen name="Buat Kontak" component={AddContact} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Provider>
     </>
   );
 };

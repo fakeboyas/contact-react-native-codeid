@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, ScrollView, SafeAreaView, StyleSheet} from 'react-native';
 import Search from '../../components/Search/Search';
 import ListContact from '../../components/ListContacts/ListContact';
 import AddButton from '../../components/Button/AddContactButton';
+import {useDispatch, useSelector} from 'react-redux';
+import {getContacts} from '../../redux/actios';
 
 function Contact({navigation}) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getContacts());
+  }, []);
   return (
     <>
       <SafeAreaView style={styles.container}>
