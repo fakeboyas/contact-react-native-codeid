@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import {Input} from 'react-native-elements';
+import {Input, Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {ActionSheet, Root} from 'native-base';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -94,6 +94,11 @@ function AddContact() {
             leftIcon={<Icon name="calendar" size={20} color="black" />}
           />
         </View>
+        <View style={styles.buttonAddContainer}>
+          <View style={styles.buttonAdd}>
+            <Button title="Simpan" />
+          </View>
+        </View>
       </View>
     </Root>
   );
@@ -122,4 +127,12 @@ const styles = StyleSheet.create({
 
   inputText: {},
   label: {marginLeft: 10},
+  buttonAdd: {
+    width: 200,
+    height: 20,
+  },
+  buttonAddContainer: {
+    display: 'flex',
+    alignItems: 'center',
+  },
 });
